@@ -7,9 +7,10 @@ export interface EventMap {
   'sponsor.created': ImageLayer
   'sponsor.selected': File
 
-  'presentation.created': PresentationLayer
-  'presentation.handled': Presentation
   'presentation.submitted': SubmittedPresentation
+  'presentation.handled': Presentation
+  'presentation.created': PresentationLayer
+  'presentation.added': PresentationLayer
 
   'form.updated': Schema
 }

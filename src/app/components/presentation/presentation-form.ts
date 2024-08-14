@@ -15,11 +15,11 @@ export class PresentationForm extends Form<SubmittedPresentation> {
     title: new InputLabel(
       'Título da apresentação',
       'text',
-      'title',
+      'title'
     ).setRequired(true),
     github: new InputLabel('Github', 'text', 'github'),
     speaker: new InputLabel('Nome do apresentador', 'text', 'name').setRequired(
-      true,
+      true
     ),
     role: new InputLabel('Papel de atuação', 'text', 'role').setRequired(true),
     photo: new InputLabel<File>('Foto', 'file', 'photo').setRequired(true),
@@ -49,7 +49,8 @@ export class PresentationForm extends Form<SubmittedPresentation> {
 
   async getFromGithub(user: string): Promise<GithubUser | void> {
     try {
-      return await (await fetch(`https://api.github.com/users/${user}`)).json()
+      const api = `https://api.github.com/users`
+      return await (await fetch(`${api}/${user}`)).json()
     } catch {
       // throw err
     }

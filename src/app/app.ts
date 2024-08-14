@@ -7,6 +7,7 @@ import {onFormChange} from '@events'
 import {use} from '@websqnl/di'
 import {h} from '@utils'
 import {
+  onPresentationAdded,
   onPresentationCreated,
   onPresentationHandled,
   onPresentationSubmitted,
@@ -25,7 +26,39 @@ export const loadApp = (container: HTMLElement) => {
   const accordion = new Accordion()
 
   const theme = use(ThemeToggle)
-  container.appendChild(theme)
+
+  /**
+   *                                 _        _   _
+   *  _ __  _ __ ___  ___  ___ _ __ | |_ __ _| |_(_) ___  _ __
+   * | '_ \| '__/ _ \/ __|/ _ \ '_ \| __/ _` | __| |/ _ \| '_ \
+   * | |_) | | |  __/\__ \  __/ | | | || (_| | |_| | (_) | | | |
+   * | .__/|_|  \___||___/\___|_| |_|\__\__,_|\__|_|\___/|_| |_|
+   * |_|
+   */
+
+  control.presentation.add.onclick = () => {
+    const form = new PresentationForm()
+    const label = `Presentation ${accordion.items.length + 1}`
+
+    const item = accordion.add(label, form)
+
+    item.openSection()
+
+    form.controls.title.element.focus()
+
+    form.onsubmit = (ev) => {
+      ev.preventDefault()
+
+      handler.emit('presentation.submitted', form.value)
+
+      accordion.closeAll()
+    }
+  }
+
+  handler.on('presentation.submitted', onPresentationSubmitted)
+  handler.on('presentation.handled', onPresentationHandled)
+  handler.on('presentation.created', onPresentationCreated)
+  handler.on('presentation.added', onPresentationAdded)
 
   /**
    *  ___ _ __   ___  _ __  ___  ___  _ __
@@ -52,30 +85,6 @@ export const loadApp = (container: HTMLElement) => {
 
   handler.on('form.updated', onFormChange)
 
-  /**
-   *                                 _        _   _
-   *  _ __  _ __ ___  ___  ___ _ __ | |_ __ _| |_(_) ___  _ __
-   * | '_ \| '__/ _ \/ __|/ _ \ '_ \| __/ _` | __| |/ _ \| '_ \
-   * | |_) | | |  __/\__ \  __/ | | | || (_| | |_| | (_) | | | |
-   * | .__/|_|  \___||___/\___|_| |_|\__\__,_|\__|_|\___/|_| |_|
-   * |_|
-   */
-
-  control.presentation.add.onclick = () => {
-    const form = new PresentationForm()
-    const label = `Presentation ${accordion.items.length + 1}`
-    accordion.add(label, form)
-
-    form.onsubmit = (ev) => {
-      ev.preventDefault()
-      handler.emit('presentation.submitted', form.value)
-    }
-  }
-
-  handler.on('presentation.submitted', onPresentationSubmitted)
-  handler.on('presentation.handled', onPresentationHandled)
-  handler.on('presentation.created', onPresentationCreated)
-
   // layer.grid.setSize(config.grid.tile).setOrder(10).render()
 
   layer.background.setDraggable(false).setSrc(form.value.logo).render()
@@ -87,6 +96,12 @@ export const loadApp = (container: HTMLElement) => {
     .setSize(78)
     .setColor('white')
     .render()
+
+  sidenav.onOpen = () => {
+    queueMicrotask(() => {
+      control.title.element.focus()
+    })
+  }
 
   canvas.add(
     layer.grid,
@@ -123,5 +138,5 @@ export const loadApp = (container: HTMLElement) => {
 
   main.append(canvas)
 
-  container.append(main, sidenav, download)
+  container.append(theme, main, sidenav, download)
 }
