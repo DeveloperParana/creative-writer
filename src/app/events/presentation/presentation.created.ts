@@ -1,4 +1,4 @@
-import {PresentationLayer} from '@models/presentation-layer'
+import {PresentationLayer} from 'src/app/core/presentation-layer'
 import {EventHandler} from '@interfaces/event-handler'
 import {LayerSchema} from '@interfaces/layer-schema'
 import {Canvas} from '@elements/canvas'

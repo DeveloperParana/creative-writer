@@ -4,7 +4,7 @@ import type {
   ImageLayer,
   TextLayer,
   WordLayer,
-} from '@models'
+} from 'src/app/core'
 import type {PresentationSchema} from './presentation'
 
 export abstract class DetailsSchema {

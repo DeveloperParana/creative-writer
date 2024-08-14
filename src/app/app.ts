@@ -143,5 +143,6 @@ export const loadApp = (container: HTMLElement) => {
 
   main.append(canvas)
 
-  container.append(theme, main, sidenav, download)
+  container.append(main, sidenav, download)
+  document.body.append(theme)
 }

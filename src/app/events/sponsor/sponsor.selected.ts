@@ -1,7 +1,7 @@
 import {Config, EventHandler, LayerSchema} from '@interfaces'
 import {determineCenter, determineSize} from '@math'
 import {loadImageData, readDataFile} from '@utils'
-import {ImageLayer} from '@models/image-layer'
+import {ImageLayer} from 'src/app/core/image-layer'
 import {use} from '@websqnl/di'
 
 export const onSponsorSelected = (file: File) => {

@@ -1,6 +1,6 @@
 import {builtIn} from '@utils/decorators'
 import {Vector2} from '@math/vector2'
-import {Layer} from '@models/base'
+import {Layer} from 'src/app/core/base'
 
 @builtIn('canvas', 'cw-canvas')
 export class Canvas extends HTMLCanvasElement {

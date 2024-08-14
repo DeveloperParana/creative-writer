@@ -1,6 +1,6 @@
 import {Presentation, SubmittedPresentation} from './presentation'
-import {PresentationLayer} from '@models/presentation-layer'
-import {ImageLayer} from '@models/image-layer'
+import {PresentationLayer} from 'src/app/core/presentation-layer'
+import {ImageLayer} from 'src/app/core/image-layer'
 import {Schema} from './schema'
 
 export interface EventMap {

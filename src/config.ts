@@ -1,4 +1,4 @@
-import {DetailsLayer, GridLayer, ImageLayer, TextLayer} from '@models'
+import {DetailsLayer, GridLayer, ImageLayer, TextLayer} from 'src/app/core'
 import type {Config, FormControl, LayerSchema} from '@interfaces'
 import {
   Input,

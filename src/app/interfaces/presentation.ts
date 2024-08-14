@@ -1,6 +1,5 @@
-import {PhotoLayer} from '@models/photo-layer'
-import {TextLayer} from '@models/text-layer'
-import {WordLayer} from '@models/word-layer'
+import {PhotoLayer} from 'src/app/core/photo-layer'
+import {WordLayer} from 'src/app/core/word-layer'
 export interface SubmittedPresentation {
   name: string
   role: string
@@ -19,7 +18,7 @@ export interface Presentation {
 }
 
 export interface PresentationSchema {
-  title: TextLayer
+  title: WordLayer
   speaker: WordLayer
   // role: WordLayer
   photo: PhotoLayer
