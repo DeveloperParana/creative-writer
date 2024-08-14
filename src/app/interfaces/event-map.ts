@@ -4,8 +4,9 @@ import {ImageLayer} from '@models/image-layer'
 import {Schema} from './schema'
 
 export interface EventMap {
-  'sponsor.created': ImageLayer
   'sponsor.selected': File
+  'sponsor.created': ImageLayer
+  'sponsor.added': ImageLayer
 
   'presentation.submitted': SubmittedPresentation
   'presentation.handled': Presentation

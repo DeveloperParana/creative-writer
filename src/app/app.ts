@@ -1,11 +1,15 @@
 import {EventHandler, FormControl, LayerSchema, Schema} from '@interfaces'
 import {Form, Canvas, Sidenav, Accordion, DownloadButton} from '@elements'
-import {onSponsorCreated, onSponsorSelected} from '@events/sponsor'
 import {PresentationForm} from '@components/presentation'
 import {ThemeToggle} from '@components/theme'
 import {onFormChange} from '@events'
 import {use} from '@websqnl/di'
 import {h} from '@utils'
+import {
+  onSponsorAdded,
+  onSponsorCreated,
+  onSponsorSelected,
+} from '@events/sponsor'
 import {
   onPresentationAdded,
   onPresentationCreated,
@@ -74,6 +78,7 @@ export const loadApp = (container: HTMLElement) => {
 
   handler.on('sponsor.selected', onSponsorSelected)
   handler.on('sponsor.created', onSponsorCreated)
+  handler.on('sponsor.added', onSponsorAdded)
 
   control.sponsor.button.onclick = () => {
     control.sponsor.input.click()

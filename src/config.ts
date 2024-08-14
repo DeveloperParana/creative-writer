@@ -202,8 +202,8 @@ export const formControl: FormControl = {
 }
 
 formControl.grid.add(
-  new SliderLabel('Quantidade', 'grid', config.grid.tile),
-  new CheckboxLabel('Mostrar', 'gridActive', 'true', config.grid.active)
+  new CheckboxLabel('Mostrar', 'gridActive', 'true', config.grid.active),
+  new SliderLabel('Quantidade', 'grid', config.grid.tile)
 )
 
 formControl.logo.add(
