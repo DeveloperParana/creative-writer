@@ -16,6 +16,7 @@ import {
   onPresentationHandled,
   onPresentationSubmitted,
 } from '@events/presentation'
+import { TitleBar } from '@elements/title-bar'
 
 export const loadApp = (container: HTMLElement) => {
   const canvas = use(Canvas)
@@ -32,6 +33,8 @@ export const loadApp = (container: HTMLElement) => {
   const theme = use(ThemeToggle)
 
   const download = new DownloadButton(canvas)
+
+  const titleBar = new TitleBar('Escritor Criativo')
 
   /**
    *                                 _        _   _
@@ -144,5 +147,5 @@ export const loadApp = (container: HTMLElement) => {
   main.append(canvas)
 
   container.append(sidenav, main)
-  document.body.append(theme, download)
+  document.body.append(titleBar, theme, download)
 }

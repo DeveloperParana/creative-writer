@@ -41,6 +41,24 @@ body {
   color: rgb(var(--cw-primary-rgb));
 }
 
+#title-bar {
+  position: fixed;
+  left: env(titlebar-area-x, 0);
+  top: env(titlebar-area-y, 0);
+  height: env(titlebar-area-height, 50px);
+  width: env(titlebar-area-width, 100%);
+  -webkit-app-region: drag;
+  
+  color: rgb(var(--cw-surface-rgb));
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 0;
+}
+
 #app {
   display: flex;
   flex-direction: row;

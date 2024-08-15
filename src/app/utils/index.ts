@@ -3,6 +3,7 @@ export * from './writes';
 export * from './async';
 export * from './data-from-form';
 export * from './date-time';
+export * from './debounce';
 export * from './event-emitter';
 export * from './font';
 export * from './h';
