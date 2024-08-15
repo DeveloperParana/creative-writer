@@ -31,6 +31,8 @@ export const loadApp = (container: HTMLElement) => {
 
   const theme = use(ThemeToggle)
 
+  const download = new DownloadButton(canvas)
+
   /**
    *                                 _        _   _
    *  _ __  _ __ ___  ___  ___ _ __ | |_ __ _| |_(_) ___  _ __
@@ -90,8 +92,6 @@ export const loadApp = (container: HTMLElement) => {
 
   handler.on('form.updated', onFormChange)
 
-  // layer.grid.setSize(config.grid.tile).setOrder(10).render()
-
   layer.background.setDraggable(false).setSrc(form.value.logo).render()
 
   layer.logo.setOrder(4).setSrc('logos/dev-parana.svg').render()
@@ -139,10 +139,10 @@ export const loadApp = (container: HTMLElement) => {
 
   const main = h('main')
 
-  const download = new DownloadButton(canvas)
+  main.append(sidenav.button)
 
   main.append(canvas)
 
-  container.append(main, sidenav, download)
-  document.body.append(theme)
+  container.append(sidenav, main)
+  document.body.append(theme, download)
 }

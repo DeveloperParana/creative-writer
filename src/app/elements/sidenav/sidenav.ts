@@ -37,7 +37,7 @@ export class Sidenav extends HTMLElement {
 
   connectedCallback() {
     this.classList.add('cw-sidenav')
-    this.append(this.button)
+    // this.append(this.button)
 
     const observer = new MutationObserver(() => {
       console.log(getChildren(this, 'presentationForm'))
