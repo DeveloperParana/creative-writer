@@ -19,6 +19,8 @@ body {
   font-size: 1.2em;
   font-weight: 400;
 
+  color: #13b52b;
+
   --cw-primary-rgb: 19, 181, 43;
   --cw-onprimary-rgb: 255, 255 255;
   --cw-surface-rgb: 250, 250, 250;
@@ -72,18 +74,13 @@ body {
     max-height: 100vh;
     overflow-x: auto;
     color: #f9f9f9;
-    // padding: 2em;
 
     transition: margin 400ms ease-in-out;
 
-    margin-left: 0;
-
+    margin-left: calc(-420px - 2em);
+    
     &.is-open {
-      margin-left: calc(-420px - 2em);
-
-      & + main {
-        // min-width: 100%;
-      }
+      margin-left: 0;
     }
   }
 

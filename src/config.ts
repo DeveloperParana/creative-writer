@@ -122,6 +122,7 @@ const logos = [
 const backgrounds = [
   ['Github', 'images/github-wall.svg'],
   ['Bermuda', 'images/bermuda-circle.svg'],
+  ['Colmeia', 'images/hive.svg'],
 ]
 
 export const config: Config = {

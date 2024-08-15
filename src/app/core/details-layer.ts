@@ -20,17 +20,17 @@ export class DetailsLayer extends Layer implements DetailsSchema {
   date = new WordLayer(0, 0, this.width - this.calendar.width, 180)
     .setSize(48)
     .setWeight('normal')
-    .setColor('#D9D9D9')
+    .setColor('#f9f9f9')
 
   time = new WordLayer(0, 0, this.width - this.clock.width, 180)
     .setSize(48)
     .setWeight('normal')
-    .setColor('#D9D9D9')
+    .setColor('#f9f9f9')
 
   location = new WordLayer(0, 0, this.width - this.pin.width, 180)
     .setSize(48)
     .setWeight('normal')
-    .setColor('#D9D9D9')
+    .setColor('#f9f9f9')
 
   async render() {
     this.context.clearRect(0, 0, this.width, this.height)

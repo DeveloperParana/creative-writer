@@ -19,13 +19,15 @@ export class Sidenav extends HTMLElement {
     this.classList.toggle('is-open')
     this.button.classList.toggle('is-open')
     document.body.classList.toggle('cw-sidenav-is-open')
+    
     this.#isOpened = !this.#isOpened
-
+    
     if (this.#isOpened) {
       for (const fn of this.#onOpen) fn()
     } else {
       for (const fn of this.#onClose) fn()
     }
+
   }
 
   button = new SidenavButton(this.onClickInsideButton)
