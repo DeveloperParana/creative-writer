@@ -121,8 +121,12 @@ const logos = [
 
 const backgrounds = [
   ['Github', 'images/github-wall.svg'],
-  ['Bermuda', 'images/bermuda-circle.svg'],
+  ['Aspiral', 'images/bermuda-circle.svg'],
   ['Colmeia', 'images/hive.svg'],
+  ['NodeJS 3D', 'images/nodejs-3d.png'],
+  ['PHP 3D', 'images/php-3d.png'],
+  ['Rust 3D', 'images/rust-3d.png'],
+  ['Front In', 'images/front-in-maringa-3d.png'],
 ]
 
 export const config: Config = {
@@ -191,7 +195,7 @@ export const formControl: FormControl = {
   time: new InputLabel('Horário', 'time', 'time'),
   location: new InputLabel('Local', 'text', 'location'),
   background: new FieldSet('Imagem de fundo'),
-  logo: new FieldSet('Grupo'),
+  logo: new FieldSet('Logo'),
   sponsor: {
     input: new Input('file', 'file', false),
     button: new Button('Adicionar patrocinador'),
