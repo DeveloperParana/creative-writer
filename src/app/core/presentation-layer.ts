@@ -29,9 +29,9 @@ export class PresentationLayer extends Layer implements PresentationSchema {
     .setColor('#D9D9D9')
 
   async render() {
-    this.context.clearRect(0, 0, this.width, this.height)
-
     await this.photo.render().then(() => {
+      this.context.clearRect(0, 0, this.width, this.height)
+
       this.context.drawImage(
         this.photo,
         this.photo.position.x,

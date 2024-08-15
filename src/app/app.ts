@@ -2,9 +2,11 @@ import {EventHandler, FormControl, LayerSchema, Schema} from '@interfaces'
 import {Form, Canvas, Sidenav, Accordion, DownloadButton} from '@elements'
 import {PresentationForm} from '@components/presentation'
 import {ThemeToggle} from '@components/theme'
+import {TitleBar} from '@elements/title-bar'
 import {onFormChange} from '@events'
+import {dispatch, h} from '@utils'
 import {use} from '@websqnl/di'
-import {h} from '@utils'
+import {login} from '@store'
 import {
   onSponsorAdded,
   onSponsorCreated,
@@ -16,7 +18,8 @@ import {
   onPresentationHandled,
   onPresentationSubmitted,
 } from '@events/presentation'
-import { TitleBar } from '@elements/title-bar'
+
+dispatch(login({username: 'user', password: 'pass'}))
 
 export const loadApp = (container: HTMLElement) => {
   const canvas = use(Canvas)

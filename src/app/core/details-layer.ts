@@ -33,7 +33,7 @@ export class DetailsLayer extends Layer implements DetailsSchema {
     .setColor('#f9f9f9')
 
   async render() {
-    this.context.clearRect(0, 0, this.width, this.height)
+    
 
     let y = this.height / 4 - 12
 
@@ -52,6 +52,8 @@ export class DetailsLayer extends Layer implements DetailsSchema {
   }
 
   async renderDate(x: number, y: number) {
+    this.context.clearRect(0, 0, this.width, this.height)
+    
     if (!this.date.isEmpty) {
       await this.calendar.render()
       this.context.drawImage(this.calendar, x, y)

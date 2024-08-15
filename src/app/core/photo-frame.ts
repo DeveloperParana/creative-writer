@@ -10,9 +10,8 @@ export class PhotoFrameLayer extends Layer {
   }
 
   async render() {
-    this.context.clearRect(0, 0, this.width, this.height)
-
     return this.#image.decode().then(() => {
+      this.context.clearRect(0, 0, this.width, this.height)
       this.context.drawImage(this.#image, 0, 0)
     })
   }

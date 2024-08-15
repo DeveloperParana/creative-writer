@@ -37,11 +37,11 @@ export class PhotoLayer extends Layer {
   }
 
   async render() {
-    this.context.clearRect(0, 0, this.width, this.height)
-
     if (!this.#hasNoImage(this.#image.src)) {
       return this.#image.decode().then(() => {
         const {width, height} = this.#image
+
+        this.context.clearRect(0, 0, this.width, this.height)
         this.context.drawImage(this.#image, 8, 8, width, height)
       })
     }

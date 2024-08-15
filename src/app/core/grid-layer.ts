@@ -23,10 +23,12 @@ export class GridLayer extends Layer {
   }
 
   async render() {
-    this.context.clearRect(0, 0, this.width, this.height)
+    
     const col = this.width / this.size
     const row = this.height / this.size
 
+    this.context.clearRect(0, 0, this.width, this.height)
+    
     for (let x = 0; x < this.size; x++) {
       for (let y = 0; y < this.size; y++) {
         const path = new Path2D()

@@ -20,9 +20,9 @@ export class ImageLayer extends Layer {
   }
 
   async render() {
-    this.context.canvas.width = this.context.canvas.width
     if (!this.#hasNoImage(this.#image.src)) {
       return this.#image.decode().then(() => {
+        this.context.clearRect(0, 0, this.width, this.height)
         this.context.drawImage(this.#image, 0, 0, this.width, this.height)
       })
     }

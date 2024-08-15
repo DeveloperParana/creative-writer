@@ -112,7 +112,7 @@ const logos = [
   ['Agile', 'logos/agile.svg'],
   ['Curitiba', 'logos/curitiba.svg'],
   ['Delphi', 'logos/delphi.svg'],
-  ['Geral', 'logos/geral.svg'],
+  ['Front In', 'logos/front-in-maringa.svg'],
   ['NodeJS', 'logos/nodejs.svg'],
   ['PHP', 'logos/php.svg'],
   ['Rust', 'logos/rust.svg'],
@@ -121,12 +121,15 @@ const logos = [
 
 const backgrounds = [
   ['Github', 'images/github-wall.svg'],
-  ['Aspiral', 'images/bermuda-circle.svg'],
-  ['Colmeia', 'images/hive.svg'],
   ['NodeJS 3D', 'images/nodejs-3d.png'],
   ['PHP 3D', 'images/php-3d.png'],
   ['Rust 3D', 'images/rust-3d.png'],
-  ['Front In', 'images/front-in-maringa-3d.png'],
+  ['Front In 3D', 'images/front-in-maringa-3d.png'],
+  ['TypeScript 3D', 'images/typescript-3d.png'],
+  ['Delphi 3D', 'images/delphi-3d.png'],
+  ['Silício', 'images/silicio.svg'],
+  ['Colmeia', 'images/hive.svg'],
+  ['Circulos', 'images/bermuda-circle.svg'],
 ]
 
 export const config: Config = {
@@ -208,7 +211,7 @@ export const formControl: FormControl = {
 
 formControl.grid.add(
   new CheckboxLabel('Mostrar', 'gridActive', 'true', config.grid.active),
-  new SliderLabel('Quantidade', 'grid', config.grid.tile)
+  new SliderLabel('Tamanho', 'grid', config.grid.tile)
 )
 
 formControl.logo.add(

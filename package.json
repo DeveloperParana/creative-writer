@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build --base='creative-writer'",
+    "build": "tsc && vite build --base='/creative-writer'",
     "preview": "vite preview",
     "test": "jest"
   },

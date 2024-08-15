@@ -16,7 +16,7 @@ body {
 :root {
   font-family: Mukta, sans-serif;
   line-height: 1.5;
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 400;
 
   color: #13b52b;
@@ -50,7 +50,7 @@ body {
   height: env(titlebar-area-height, 50px);
   width: env(titlebar-area-width, 100%);
   -webkit-app-region: drag;
-  
+
   color: rgb(var(--cw-surface-rgb));
 
   display: flex;
@@ -70,14 +70,14 @@ body {
 
   > aside {
     min-width: var(--cw-sidenav-width);
-    
+
     max-height: 100vh;
     overflow-x: auto;
 
     transition: margin 400ms ease-in-out;
 
-    margin-left: calc(-420px - 2em);
-    
+    margin-left: calc(var(--cw-sidenav-width) * -1 - 2px);
+
     &.is-open {
       margin-left: 0;
     }
@@ -112,7 +112,6 @@ canvas {
   top: 1.5em;
   left: 1em;
   z-index: 1;
-
 }
 .cw-theme-toggle {
   position: fixed;
@@ -134,7 +133,7 @@ canvas {
 }
 
 .form-group {
-  margin: 16px;
+  margin: 0.6em;
   display: flex;
   flex-flow: row wrap;
   gap: 16px;
@@ -148,14 +147,14 @@ fieldset {
   display: flex;
   flex-flow: row wrap;
   border-radius: 0.4em;
-  padding: 1.8em 2.2em 2.2em;
+  padding: 1.4em 1.8em 1.8em;
   border: solid 2px rgba(var(--cw-onsurface-rgb, 0, 0, 0), 0.6);
-  gap: 1em 2em;
+  gap: 1em;
   legend {
     padding: 0 0.5em;
   }
 
   > label {
-    width: 120px;
+    width: 140px;
   }
 }
