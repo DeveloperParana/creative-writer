@@ -1,8 +1,5 @@
-import {builtIn} from '@utils/decorators'
-import {parseDOM} from '@utils/parse-dom'
+import {builtIn, parseDOM, h, timeout} from '@utils'
 import {Canvas} from './canvas'
-import {h} from '@utils/h'
-import {timeout} from '@utils/timeout'
 
 @builtIn('button', 'cw-download-button')
 export class DownloadButton extends HTMLButtonElement {
@@ -13,7 +10,7 @@ export class DownloadButton extends HTMLButtonElement {
       </svg>
 
     `,
-    'image/svg+xml',
+    'image/svg+xml'
   )
 
   constructor(private canvas: Canvas) {
@@ -38,7 +35,7 @@ export class DownloadButton extends HTMLButtonElement {
           }
         },
         'image/png',
-        1,
+        1
       )
     }
   }

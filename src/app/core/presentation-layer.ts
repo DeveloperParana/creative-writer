@@ -5,24 +5,24 @@ import {WordLayer} from './word-layer'
 import {Layer} from './base'
 
 export class PresentationLayer extends Layer implements PresentationSchema {
-  photo = new PhotoLayer(this.position.x, 0, 180, 180)
-  photoFrame = new PhotoFrameLayer(this.position.x, 0, 180, 180)
+  photo = new PhotoLayer(60, 0, 180, 180)
+  photoFrame = new PhotoFrameLayer(60, 0, 180, 180)
 
   title = new WordLayer(
-    this.position.x + this.photo.position.x,
-    0,
-    this.width - this.photo.width,
-    180
+    this.photo.width + 90,
+    20,
+    this.width + 40 - this.photo.width,
+    90
   )
     .setSize(48)
     .setWeight('bold')
     .setColor('#62F772')
 
   speaker = new WordLayer(
-    this.position.x + this.photo.position.x,
-    0,
-    this.width - this.photo.width,
-    180
+    this.photo.width + 90,
+    90,
+    this.width + 40 - this.photo.width,
+    90
   )
     .setSize(32)
     .setWeight('normal')
@@ -31,53 +31,37 @@ export class PresentationLayer extends Layer implements PresentationSchema {
   async render() {
     this.context.clearRect(0, 0, this.width, this.height)
 
-    let y = this.height / 4
+    await this.photo.render().then(() => {
+      this.context.drawImage(
+        this.photo,
+        this.photo.position.x,
+        this.photo.position.y
+      )
+    })
 
-    let x = 0
+    await this.photoFrame.render().then(() => {
+      this.context.drawImage(
+        this.photoFrame,
+        this.photoFrame.position.x,
+        this.photoFrame.position.y
+      )
+    })
 
-    await this.renderPhoto(x, y)
+    await this.title.render().then(() => {
+      this.context.drawImage(
+        this.title,
+        this.title.position.x,
+        this.title.position.y
+      )
+    })
 
-    x += 320
-
-    await this.renderTitle(x, y)
-
-    y += 66
-    x = 20
-
-    await this.renderSpeaker(x, y)
-
-    // await this.photo
-    //   .render()
-    //   .then(() => this.photo.render())
-    //   .then(() => this.context.drawImage(this.photo, x, y))
-    //   .then(() => this.photoFrame.render())
-    //   .then(() => this.context.drawImage(this.photoFrame, x, y))
-    //   .then(() => this.title.render())
-    //   .then(() => {
-    //     y += 40
-    //     x += this.photo.width + x
-    //     this.context.drawImage(this.title, x, y)
-    //   })
-    //   .then(() => this.speaker.render())
-    //   .then(() => this.context.drawImage(this.speaker, x, y))
-  }
-
-  async renderPhoto(x: number, y: number) {
-    await this.photo.render()
-    this.context.drawImage(this.photo, x, y)
-
-    await this.photoFrame.render()
-    this.context.drawImage(this.photoFrame, x, y)
-  }
-
-  async renderTitle(x: number, y: number) {
-    await this.title.render()
-    this.context.drawImage(this.title, x, y)
-  }
-
-  async renderSpeaker(x: number, y: number) {
-    await this.speaker.render()
-    this.context.drawImage(this.speaker, x, y)
+    await this.speaker.render().then(() => {
+      this.context.drawImage(
+        this.speaker,
+        this.speaker.position.x,
+        this.speaker.position.y
+      )
+    })
   }
 
   setPhoto(photo: string) {
