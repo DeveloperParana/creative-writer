@@ -1,19 +1,18 @@
-import {PresentationLayer} from 'src/app/core/presentation-layer'
-import {EventHandler} from '@interfaces/event-handler'
+import {onPresentationCreated} from '@store/selectors'
 import {LayerSchema} from '@interfaces/layer-schema'
+import {addPresentation} from '@store/actions'
 import {Canvas} from '@elements/canvas'
 import {use} from '@websqnl/di'
 
-export const onPresentationCreated = (presentation: PresentationLayer) => {
+onPresentationCreated((presentation) => {
   const canvas = use(Canvas)
   const layer = use(LayerSchema)
-  const handler = use(EventHandler)
 
   canvas.add(presentation)
   layer.presentations.push(presentation)
 
   presentation.render().then(() => {
     canvas.render()
-    handler.emit('presentation.added', presentation)
+    addPresentation(presentation)
   })
-}
+})

@@ -43,24 +43,6 @@ body {
   color: rgb(var(--cw-primary-rgb));
 }
 
-#title-bar {
-  position: fixed;
-  left: env(titlebar-area-x, 0);
-  top: env(titlebar-area-y, 0);
-  height: env(titlebar-area-height, 50px);
-  width: env(titlebar-area-width, 100%);
-  -webkit-app-region: drag;
-
-  color: rgb(var(--cw-surface-rgb));
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2em;
-  font-weight: bold;
-  margin: 0;
-}
-
 #app {
   display: flex;
   flex-direction: row;
@@ -126,9 +108,7 @@ canvas {
     linear-gradient(135deg, #cccccc50 25%, transparent 25%),
     linear-gradient(45deg, transparent 75%, #cccccc50 75%),
     linear-gradient(135deg, transparent 75%, #cccccc50 75%);
-  /* Tamanho dos quadrados */
   background-size: 40px 40px;
-  /* Posicionamento dos quadrados */
   background-position: 0 0, 20px 0, 20px -20px, 0px 20px;
 }
 

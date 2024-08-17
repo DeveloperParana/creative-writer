@@ -1,8 +1,9 @@
-import {LayerSchema} from '@interfaces/layer-schema'
 import {FormControl} from '@interfaces/form-control'
+import {LayerSchema} from '@interfaces/layer-schema'
+import {onPresentationAdded} from '@store/selectors'
 import {use} from '@websqnl/di'
 
-export const onPresentationAdded = () => {
+onPresentationAdded(() => {
   const control = use(FormControl)
   const layer = use(LayerSchema)
 
@@ -13,4 +14,4 @@ export const onPresentationAdded = () => {
     const first = control.background.firstElementChild?.firstElementChild ?? []
     if (first instanceof HTMLInputElement) first.focus()
   }
-}
+})

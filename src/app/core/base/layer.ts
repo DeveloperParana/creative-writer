@@ -82,6 +82,7 @@ export abstract class Layer extends OffscreenCanvas {
   dragTo(point: Vector2) {
     if (this.dragging) {
       console.log(point)
+      console.log(this.offset)
 
       this.position.copy(point).sub(this.offset)
     }

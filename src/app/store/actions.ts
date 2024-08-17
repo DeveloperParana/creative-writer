@@ -1,14 +1,33 @@
+import {Presentation, SubmittedPresentation} from '@interfaces/presentation'
+import {ImageLayer, PresentationLayer} from '../core'
+import {Schema} from '@interfaces/schema'
 import {action} from '@utils/state'
 
-export interface Login {
-  username: string
-  password: string
-}
+/**
+ * Form
+ */
+export const updateForm = action<Schema>('form.updated')
 
-export interface Logged {
-  accressToken: string
-}
+/**
+ * Presentation
+ */
+export const submitPresentation = action<SubmittedPresentation>(
+  'presentation.submitted'
+)
 
-export const login = action<Login>('Login')
-export const loginSuccess = action<Logged>('Login Success')
-export const loginError = action<DOMException>('Login Error')
+export const handlePresentation = action<Presentation>('presentation.handled')
+
+export const createPresentation = action<PresentationLayer>(
+  'presentation.created'
+)
+
+export const addPresentation = action<PresentationLayer>('presentation.added')
+
+/**
+ * Sponsor
+ */
+export const selectSponsor = action<File>('sponsor.selected')
+
+export const createSponsor = action<ImageLayer>('sponsor.created')
+
+export const addSponsor = action<ImageLayer>('sponsor.added')

@@ -88,29 +88,31 @@ const location = {
 }
 
 const details = {
-  x: 0,
+  x: 40,
   y: height - 360,
   w: width,
   h: 180,
 }
 
 const sponsor = {
-  x: 0,
+  x: 40,
   y: height - 180,
   w: 360,
   h: 180,
 }
 
 const devParana = {
-  x: width - 360,
-  y: height - 180,
-  w: 360,
-  h: 180,
+  x: width - 250,
+  y: height - 90,
+  w: 200,
+  h: 50,
 }
 
 const logos = [
+  ['Nenhuma', ''],
   ['Agile', 'logos/agile.svg'],
   ['Curitiba', 'logos/curitiba.svg'],
+  ['DevParaná', 'logos/dev-parana.svg'],
   ['Delphi', 'logos/delphi.svg'],
   ['Front In', 'logos/front-in-maringa.svg'],
   ['NodeJS', 'logos/nodejs.svg'],
@@ -120,16 +122,18 @@ const logos = [
 ]
 
 const backgrounds = [
+  ['Nenhuma', ''],
+  ['Circulos', 'images/bermuda-circle.svg'],
+  ['Colmeia', 'images/hive.svg'],
+  ['Delphi 3D', 'images/delphi-3d.png'],
+  ['Front In 3D', 'images/front-in-maringa-3d.png'],
   ['Github', 'images/github-wall.svg'],
+  ['TypeScript 3D', 'images/typescript-3d.png'],
   ['NodeJS 3D', 'images/nodejs-3d.png'],
   ['PHP 3D', 'images/php-3d.png'],
+  ['Papel gráfico', 'images/graph-paper.svg'],
   ['Rust 3D', 'images/rust-3d.png'],
-  ['Front In 3D', 'images/front-in-maringa-3d.png'],
-  ['TypeScript 3D', 'images/typescript-3d.png'],
-  ['Delphi 3D', 'images/delphi-3d.png'],
-  ['Silício', 'images/silicio.svg'],
-  ['Colmeia', 'images/hive.svg'],
-  ['Circulos', 'images/bermuda-circle.svg'],
+  ['Placa', 'images/silicio.svg'],
 ]
 
 export const config: Config = {
@@ -184,10 +188,10 @@ export const layerSchema: LayerSchema = {
   presentations: [],
   sponsors: [],
   devParana: new ImageLayer(
-    config.logo.x,
-    config.logo.y,
-    config.logo.w,
-    config.logo.h
+    config.devParana.x,
+    config.devParana.y,
+    config.devParana.w,
+    config.devParana.h
   ),
 }
 
@@ -210,13 +214,14 @@ export const formControl: FormControl = {
 }
 
 formControl.grid.add(
-  new CheckboxLabel('Mostrar', 'gridActive', 'true', config.grid.active),
-  new SliderLabel('Tamanho', 'grid', config.grid.tile)
+  new CheckboxLabel('Mostrar grade', 'gridActive', 'true', config.grid.active),
+  new SliderLabel(`Quantidade de quadros`, 'grid', config.grid.tile)
 )
 
 formControl.logo.add(
   ...config.logos.map(([text, value]) => {
-    return new RadioLabel(text, 'logo', value)
+    const checked = text === 'DevParaná'
+    return new RadioLabel(text, 'logo', value, checked)
   })
 )
 

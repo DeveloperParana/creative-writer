@@ -1,25 +1,13 @@
-import {EventHandler, FormControl, LayerSchema, Schema} from '@interfaces'
 import {Form, Canvas, Sidenav, Accordion, DownloadButton} from '@elements'
+import {selectSponsor, submitPresentation, updateForm} from '@store'
+import {FormControl, LayerSchema, Schema} from '@interfaces'
 import {PresentationForm} from '@components/presentation'
 import {ThemeToggle} from '@components/theme'
 import {TitleBar} from '@elements/title-bar'
-import {onFormChange} from '@events'
 import {dispatch, h} from '@utils'
 import {use} from '@websqnl/di'
-import {login} from '@store'
-import {
-  onSponsorAdded,
-  onSponsorCreated,
-  onSponsorSelected,
-} from '@events/sponsor'
-import {
-  onPresentationAdded,
-  onPresentationCreated,
-  onPresentationHandled,
-  onPresentationSubmitted,
-} from '@events/presentation'
 
-dispatch(login({username: 'user', password: 'pass'}))
+// dispatch(login({username: 'user', password: 'pass'}))
 
 export const loadApp = (container: HTMLElement) => {
   const canvas = use(Canvas)
@@ -28,8 +16,6 @@ export const loadApp = (container: HTMLElement) => {
 
   const layer = use(LayerSchema)
   const control = use(FormControl)
-
-  const handler = use(EventHandler)
 
   const accordion = new Accordion()
 
@@ -61,16 +47,17 @@ export const loadApp = (container: HTMLElement) => {
     form.onsubmit = (ev) => {
       ev.preventDefault()
 
-      handler.emit('presentation.submitted', form.value)
+      dispatch(submitPresentation(form.value))
+      // handler.emit('presentation.submitted', form.value)
 
       accordion.closeAll()
     }
   }
 
-  handler.on('presentation.submitted', onPresentationSubmitted)
-  handler.on('presentation.handled', onPresentationHandled)
-  handler.on('presentation.created', onPresentationCreated)
-  handler.on('presentation.added', onPresentationAdded)
+  // handler.on('presentation.submitted', onPresentationSubmitted)
+  // handler.on('presentation.handled', onPresentationHandled)
+  // handler.on('presentation.created', onPresentationCreated)
+  // handler.on('presentation.added', onPresentationAdded)
 
   /**
    *  ___ _ __   ___  _ __  ___  ___  _ __
@@ -81,26 +68,30 @@ export const loadApp = (container: HTMLElement) => {
    */
   control.sponsor.input.onchange = () => {
     const [file] = control.sponsor.input.files ?? []
-    handler.emit('sponsor.selected', file)
+    dispatch(selectSponsor(file))
+    // handler.emit('sponsor.selected', file)
   }
 
-  handler.on('sponsor.selected', onSponsorSelected)
-  handler.on('sponsor.created', onSponsorCreated)
-  handler.on('sponsor.added', onSponsorAdded)
+  // handler.on('sponsor.selected', onSponsorSelected)
+  // handler.on('sponsor.created', onSponsorCreated)
+  // handler.on('sponsor.added', onSponsorAdded)
 
   control.sponsor.button.onclick = () => {
     control.sponsor.input.click()
   }
 
   const form = new Form<Schema>(() => {
-    handler.emit('form.updated', form.value)
+    dispatch(updateForm(form.value))
+    // handler.emit('form.updated', form.value)
   })
 
-  handler.on('form.updated', onFormChange)
+  // handler.on('form.updated', onFormChange)
 
   layer.background.setDraggable(false).setSrc(form.value.logo).render()
 
   layer.logo.setOrder(4).setSrc('logos/dev-parana.svg').render()
+
+  layer.devParana.setSrc('dev-parana.svg').setOrder(19).render()
 
   layer.title
     .setText(control.title.value)
@@ -119,7 +110,8 @@ export const loadApp = (container: HTMLElement) => {
     layer.logo,
     layer.background,
     layer.title,
-    layer.details
+    layer.details,
+    layer.devParana
   )
 
   const dateTime = h(

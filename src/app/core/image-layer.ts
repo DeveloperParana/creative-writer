@@ -21,11 +21,19 @@ export class ImageLayer extends Layer {
 
   async render() {
     if (!this.#hasNoImage(this.#image.src)) {
-      return this.#image.decode().then(() => {
+      if (this.#normalizeSrc(this.#image.src)) {
+        return this.#image.decode().then(() => {
+          this.context.clearRect(0, 0, this.width, this.height)
+          this.context.drawImage(this.#image, 0, 0, this.width, this.height)
+        })
+      } else {
         this.context.clearRect(0, 0, this.width, this.height)
-        this.context.drawImage(this.#image, 0, 0, this.width, this.height)
-      })
+      }
     }
+  }
+
+  #normalizeSrc(src = '') {
+    return src.replace(`${location.origin}/`, '')
   }
 
   #hasNoImage(src?: string) {

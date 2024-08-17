@@ -34,6 +34,14 @@ export class PresentationForm extends Form<SubmittedPresentation> {
     this.append(...values(this.controls), ...values(this.actions))
     this.controls.photoUrl.element.readOnly = true
 
+    this.addEventListener('submit', () => {
+      this.controls.title.element.readOnly = true
+      this.controls.github.element.readOnly = true
+      this.controls.speaker.element.readOnly = true
+      this.controls.role.element.readOnly = true
+      this.controls.photo.element.readOnly = true
+    })
+
     this.controls.github.onchange = async () => {
       if (this.github.value) {
         const user = await this.getFromGithub(this.github.value)

@@ -1,8 +1,9 @@
-import {LayerSchema} from '@interfaces/layer-schema'
 import {FormControl} from '@interfaces/form-control'
+import {LayerSchema} from '@interfaces/layer-schema'
+import {onSponsorAdded} from '@store/selectors'
 import {use} from '@websqnl/di'
 
-export const onSponsorAdded = () => {
+onSponsorAdded(() => {
   const control = use(FormControl)
   const layer = use(LayerSchema)
 
@@ -13,4 +14,4 @@ export const onSponsorAdded = () => {
     const first = control.grid.firstElementChild?.firstElementChild ?? []
     if (first instanceof HTMLInputElement) first.focus()
   }
-}
+})
