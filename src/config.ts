@@ -46,15 +46,15 @@ const background = {
 }
 
 const logo = {
-  x: 0,
-  y: 0,
+  x: 40,
+  y: 40,
   w: 220,
   h: 220,
 }
 
 const title = {
-  x: 220,
-  y: 20,
+  x: 260,
+  y: 60,
   w: width - 180,
   h: 180,
 }
