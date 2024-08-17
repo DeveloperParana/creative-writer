@@ -22,8 +22,6 @@ export class Menu extends HTMLMenuElement {
     this.context.style.left = pageX + 'px'
     this.context.style.top = pageY + 'px'
 
-    console.log(this.context.style.display)
-
     if (this.context.style.display === 'none') {
       this.context.style.display = 'block'
     }

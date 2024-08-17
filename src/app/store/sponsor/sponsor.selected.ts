@@ -24,17 +24,6 @@ onSponsorSelected((file) => {
 
       const offset = config.sponsor.w * layer.sponsors.length
 
-      console.table([
-        {ref: 'dimension', width: dimension.width, height: dimension.height},
-        {ref: 'center', width: center.width, height: center.height},
-        {ref: 'offset', width: offset},
-        {
-          ref: 'result',
-          width: config.sponsor.x + center.width + offset,
-          height: config.sponsor.y + center.height,
-        },
-      ])
-
       const sponsor = new ImageLayer(
         config.sponsor.x + center.width + offset,
         config.sponsor.y + center.height,
