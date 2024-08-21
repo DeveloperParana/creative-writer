@@ -6,7 +6,7 @@ interface RectConfig {
 }
 
 interface GridConfig extends RectConfig {
-  tile: number
+  tiles: number
   active: boolean
 }
 

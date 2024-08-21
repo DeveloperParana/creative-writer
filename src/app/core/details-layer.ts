@@ -5,36 +5,34 @@ import {Layer} from './base'
 import {dateTime} from '@utils/date-time'
 
 export class DetailsLayer extends Layer implements DetailsSchema {
-  calendar = new ImageLayer(this.position.x, 0, 180, 180)
-    .setSize(48, 48)
+  calendar = new ImageLayer(this.position.x, 0, this.height, this.height)
+    .setSize(this.height / 4, this.height / 4)
     .setSrc('icons/calendar.svg')
 
-  clock = new ImageLayer(this.position.x, 0, 180, 180)
-    .setSize(48, 48)
+  clock = new ImageLayer(this.position.x, 0, this.height, this.height)
+    .setSize(this.height / 4, this.height / 4)
     .setSrc('icons/clock.svg')
 
-  pin = new ImageLayer(this.position.x, 0, 1080, 180)
-    .setSize(48, 48)
+  pin = new ImageLayer(this.position.x, 0, 1080, this.height)
+    .setSize(this.height / 4, this.height / 4)
     .setSrc('icons/pin.svg')
 
-  date = new WordLayer(0, 0, this.width - this.calendar.width, 180)
-    .setSize(48)
+  date = new WordLayer(0, 0, this.width - this.calendar.width, this.height)
+    .setSize(this.height / 4)
     .setWeight('normal')
     .setColor('#f9f9f9')
 
-  time = new WordLayer(0, 0, this.width - this.clock.width, 180)
-    .setSize(48)
+  time = new WordLayer(0, 0, this.width - this.clock.width, this.height)
+    .setSize(this.height / 4)
     .setWeight('normal')
     .setColor('#f9f9f9')
 
-  location = new WordLayer(0, 0, this.width - this.pin.width, 180)
-    .setSize(48)
+  location = new WordLayer(0, 0, this.width - this.pin.width, this.height)
+    .setSize(this.height / 4)
     .setWeight('normal')
     .setColor('#f9f9f9')
 
   async render() {
-    
-
     let y = this.height / 4 - 12
 
     let x = 20
@@ -53,7 +51,7 @@ export class DetailsLayer extends Layer implements DetailsSchema {
 
   async renderDate(x: number, y: number) {
     this.context.clearRect(0, 0, this.width, this.height)
-    
+
     if (!this.date.isEmpty) {
       await this.calendar.render()
       this.context.drawImage(this.calendar, x, y)

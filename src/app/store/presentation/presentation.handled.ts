@@ -11,7 +11,7 @@ onPresentationHandled((value) => {
   const layer = use(LayerSchema)
 
   const width = config.width
-  const height = config.height / config.grid.tile
+  const height = config.height / config.grid.tiles
 
   const y = height * (layer.presentations.length + 1) + 90
 

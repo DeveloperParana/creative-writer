@@ -1,8 +1,12 @@
-import {Callback} from '@interfaces/common'
-import {setAction} from './action'
+import {addSelector, removeSelector} from './action'
+
+export interface Selector<T> {
+  (value: T): void
+}
 
 export const select = <T>(type: string) => {
-  return (callback: Callback<T>) => {
-    setAction(type, callback)
+  return (selector: Selector<T>) => {
+    addSelector(type, selector)
+    return () => removeSelector(type, selector)
   }
 }

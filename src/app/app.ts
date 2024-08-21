@@ -80,6 +80,11 @@ export const loadApp = (container: HTMLElement) => {
     control.sponsor.input.click()
   }
 
+  control.logo.onchange = (ev) => {
+    console.log(ev.target);
+    
+  }
+
   const form = new Form<Schema>(() => {
     dispatch(updateForm(form.value))
     // handler.emit('form.updated', form.value)
@@ -101,7 +106,7 @@ export const loadApp = (container: HTMLElement) => {
 
   sidenav.onOpen = () => {
     queueMicrotask(() => {
-      control.title.element.focus()
+      // control.title.element.focus()
     })
   }
 
@@ -122,13 +127,13 @@ export const loadApp = (container: HTMLElement) => {
   )
 
   form.append(
+    control.logo,
     control.title,
     dateTime,
     control.location,
-    control.logo,
+    control.background,
     control.presentation.add,
     accordion,
-    control.background,
     control.sponsor.button,
     control.grid
   )
