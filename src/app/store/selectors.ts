@@ -10,11 +10,8 @@ export const onLogoUpdated = state.select('form.logo-updated')
  * Presentation
  */
 export const onPresentationSubmitted = state.select('presentation.submitted')
-
 export const onPresentationHandled = state.select('presentation.handled')
-
 export const onPresentationCreated = state.select('presentation.created')
-
 export const onPresentationAdded = state.select('presentation.added')
 
 /**

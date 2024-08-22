@@ -7,8 +7,6 @@ import {TitleBar} from '@elements/title-bar'
 import {dispatch, h} from '@utils'
 import {use} from '@websqnl/di'
 
-// dispatch(login({username: 'user', password: 'pass'}))
-
 export const loadApp = (container: HTMLElement) => {
   const canvas = use(Canvas)
 
@@ -48,16 +46,10 @@ export const loadApp = (container: HTMLElement) => {
       ev.preventDefault()
 
       dispatch(submitPresentation(form.value))
-      // handler.emit('presentation.submitted', form.value)
 
       accordion.closeAll()
     }
   }
-
-  // handler.on('presentation.submitted', onPresentationSubmitted)
-  // handler.on('presentation.handled', onPresentationHandled)
-  // handler.on('presentation.created', onPresentationCreated)
-  // handler.on('presentation.added', onPresentationAdded)
 
   /**
    *  ___ _ __   ___  _ __  ___  ___  _ __
@@ -72,25 +64,17 @@ export const loadApp = (container: HTMLElement) => {
     // handler.emit('sponsor.selected', file)
   }
 
-  // handler.on('sponsor.selected', onSponsorSelected)
-  // handler.on('sponsor.created', onSponsorCreated)
-  // handler.on('sponsor.added', onSponsorAdded)
-
   control.sponsor.button.onclick = () => {
     control.sponsor.input.click()
   }
 
   control.logo.onchange = (ev) => {
-    console.log(ev.target);
-    
+    console.log(ev.target)
   }
 
   const form = new Form<Schema>(() => {
     dispatch(updateForm(form.value))
-    // handler.emit('form.updated', form.value)
   })
-
-  // handler.on('form.updated', onFormChange)
 
   layer.background.setDraggable(false).setSrc(form.value.logo).render()
 

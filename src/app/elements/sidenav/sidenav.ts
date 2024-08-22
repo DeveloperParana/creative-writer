@@ -1,5 +1,3 @@
-import {PresentationForm} from '@components/presentation'
-import {children, getChildren} from '@utils/decorators'
 import {SidenavButton} from './sidenav-button'
 import {builtIn} from '@utils/decorators'
 
@@ -34,18 +32,8 @@ export class Sidenav extends HTMLElement {
 
   #isOpened = false
 
-  @children(PresentationForm)
-  presentationForm: PresentationForm[] = []
-
   connectedCallback() {
     this.classList.add('cw-sidenav')
-    // this.append(this.button)
-
-    const observer = new MutationObserver(() => {
-      console.log(getChildren(this, 'presentationForm'))
-    })
-
-    observer.observe(this, {childList: true, subtree: true})
   }
 
   add(...children: Node[]) {
