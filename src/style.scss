@@ -38,7 +38,7 @@ body {
   margin: 0;
   display: flex;
   justify-content: center;
-  overflow-x: hidden;
+  // overflow-x: hidden;
   background-color: rgba(var(--cw-onprimary-rgb, 255, 255, 255), 0.5);
   color: rgb(var(--cw-primary-rgb));
 }
@@ -48,7 +48,7 @@ body {
   flex-direction: row;
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  // overflow: hidden;
 
   > aside {
     min-width: var(--cw-sidenav-width);
