@@ -14,4 +14,5 @@ export interface EventMap {
   'presentation.added': PresentationLayer
 
   'form.updated': Schema
+  'form.logo-updated': HTMLOptionElement
 }

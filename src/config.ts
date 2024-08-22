@@ -1,5 +1,6 @@
-import {DetailsLayer, GridLayer, ImageLayer, TextLayer} from 'src/app/core'
+import {DetailsLayer, GridLayer, ImageLayer, TextLayer} from '@core'
 import type {Config, FormControl, LayerSchema} from '@interfaces'
+import {getPositions} from './app/config'
 import {
   Input,
   Button,
@@ -23,89 +24,6 @@ export const themes = {
     surface: [16, 16, 16],
     onSurface: [255, 255, 255],
   },
-}
-
-const width = 1080
-const height = 1080
-const tile = 6
-
-const grid = {
-  x: 0,
-  y: 0,
-  w: width,
-  h: height,
-  tile,
-  active: false,
-}
-
-const background = {
-  x: 0,
-  y: 0,
-  w: width,
-  h: height,
-}
-
-const logo = {
-  x: 0,
-  y: 0,
-  w: 220,
-  h: 220,
-}
-
-const title = {
-  x: 220,
-  y: 20,
-  w: width - 180,
-  h: 180,
-}
-
-const presentation = {
-  x: 0,
-  y: 180,
-  w: width,
-  h: 180 * 3,
-}
-
-const date = {
-  x: 0,
-  y: height - 360,
-  w: 270,
-  h: 180,
-}
-
-const time = {
-  x: date.x + date.w,
-  y: date.y,
-  w: 180,
-  h: date.h,
-}
-
-const location = {
-  x: time.x + time.w,
-  y: time.y,
-  w: width - time.x - time.w,
-  h: time.h,
-}
-
-const details = {
-  x: 40,
-  y: height - 360,
-  w: width,
-  h: 180,
-}
-
-const sponsor = {
-  x: 40,
-  y: height - 180,
-  w: 360,
-  h: 180,
-}
-
-const devParana = {
-  x: width - 250,
-  y: height - 90,
-  w: 200,
-  h: 50,
 }
 
 const logos = [
@@ -136,20 +54,10 @@ const backgrounds = [
   ['Placa', 'images/silicio.svg'],
 ]
 
+const positions = getPositions(1080, 6)
+
 export const config: Config = {
-  width,
-  height,
-  grid,
-  logo,
-  background,
-  title,
-  details,
-  date,
-  time,
-  location,
-  presentation,
-  sponsor,
-  devParana,
+  ...positions,
   backgrounds,
   logos,
 }
@@ -202,7 +110,7 @@ export const formControl: FormControl = {
   time: new InputLabel('Horário', 'time', 'time'),
   location: new InputLabel('Local', 'text', 'location'),
   background: new FieldSet('Imagem de fundo'),
-  logo: new FieldSet('Logo'),
+  logo: new FieldSet('Grupo'),
   sponsor: {
     input: new Input('file', 'file', false),
     button: new Button('Adicionar patrocinador'),
@@ -215,7 +123,7 @@ export const formControl: FormControl = {
 
 formControl.grid.add(
   new CheckboxLabel('Mostrar grade', 'gridActive', 'true', config.grid.active),
-  new SliderLabel(`Quantidade de quadros`, 'grid', config.grid.tile)
+  new SliderLabel(`Quantidade de quadros`, 'grid', config.grid.tiles)
 )
 
 formControl.logo.add(

@@ -61,22 +61,6 @@ export class Canvas extends HTMLCanvasElement {
     return () => this.#onContextMenu.delete(fn)
   }
 
-  onMouseDown = ({offsetX, offsetY}: MouseEvent) => {
-    const position = new Vector2(offsetX, offsetY)
-
-    const layer = this.#layers
-      .filter((layer) => layer.draggable)
-      .find((layer) => {
-        return layer.detectCollision(position)
-      })
-
-    if (layer) {
-      // this.#dragLayer(layer, position)
-      this.#dragging = layer
-      layer.dragStart(position)
-    }
-  }
-
   #onMouseDown = ({offsetX, offsetY}: MouseEvent) => {
     const position = new Vector2(offsetX, offsetY)
 

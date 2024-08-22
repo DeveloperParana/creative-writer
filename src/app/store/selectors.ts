@@ -1,35 +1,25 @@
-import {Presentation, SubmittedPresentation} from '@interfaces/presentation'
-import {ImageLayer, PresentationLayer} from '../core'
-import {Schema} from '@interfaces/schema'
-import {select} from '@utils/state'
-
+import {state} from './actions'
 
 /**
  * Form
  */
-export const onFormUpdated = select<Schema>('form.updated')
+export const onFormUpdated = state.select('form.updated')
+export const onLogoUpdated = state.select('form.logo-updated')
 
 /**
  * Presentation
  */
-export const onPresentationSubmitted = select<SubmittedPresentation>(
-  'presentation.submitted'
-)
+export const onPresentationSubmitted = state.select('presentation.submitted')
 
-export const onPresentationHandled = select<Presentation>(
-  'presentation.handled'
-)
+export const onPresentationHandled = state.select('presentation.handled')
 
-export const onPresentationCreated = select<PresentationLayer>(
-  'presentation.created'
-)
+export const onPresentationCreated = state.select('presentation.created')
 
-export const onPresentationAdded =
-  select<PresentationLayer>('presentation.added')
+export const onPresentationAdded = state.select('presentation.added')
 
 /**
  * Sponsor
  */
-export const onSponsorSelected = select<File>('sponsor.selected')
-export const onSponsorCreated = select<ImageLayer>('sponsor.created')
-export const onSponsorAdded = select<ImageLayer>('sponsor.added')
+export const onSponsorSelected = state.select('sponsor.selected')
+export const onSponsorCreated = state.select('sponsor.created')
+export const onSponsorAdded = state.select('sponsor.added')

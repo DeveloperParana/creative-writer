@@ -1,12 +1,12 @@
-import {Callback} from '@interfaces/common'
+import {Selector} from './select'
 
 export class Action<T> {
   constructor(public type: string, public value: T) {}
 }
 
-export const action = <T>(type: string) => {
-  return (value: T) => {
-    return new (class extends Action<T> {
+export const action = <T extends string, V>(type: T) => {
+  return (value: V) => {
+    return new (class extends Action<V> {
       constructor() {
         super(type, value)
       }
@@ -14,13 +14,19 @@ export const action = <T>(type: string) => {
   }
 }
 
-const actions = new Map<string, Set<Callback<any>>>()
+const actions = new Map<string, Set<Selector<any>>>()
 
-export const setAction = <T>(type: string, callback: Callback<T>) => {
-  const callbacks = getAction<T>(type)
-  actions.set(type, callbacks.add(callback))
+export const addSelector = <T>(type: string, selector: Selector<T>) => {
+  const selectors = getAction<T>(type)
+  actions.set(type, selectors.add(selector))
+}
+
+export const removeSelector = <T>(type: string, selector: Selector<T>) => {
+  const selectors = getAction<T>(type)
+  selectors.delete(selector)
+  actions.set(type, selectors)
 }
 
 export const getAction = <T>(type: string) => {
-  return actions.get(type) ?? new Set<Callback<T>>()
+  return actions.get(type) ?? new Set<Selector<T>>()
 }
