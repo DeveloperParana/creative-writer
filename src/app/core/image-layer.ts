@@ -33,10 +33,15 @@ export class ImageLayer extends Layer {
   }
 
   #normalizeSrc(src = '') {
-    return src.replace(`${location.origin}/`, '')
+
+    return src.replace(`${this.host}`, '')
   }
 
   #hasNoImage(src?: string) {
-    return src === location.origin + '/undefined'
+    return src === this.host + 'undefined'
+  }
+
+  get host() {
+    return [location.origin, location.pathname].join('')
   }
 }

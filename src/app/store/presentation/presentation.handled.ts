@@ -17,9 +17,10 @@ onPresentationHandled((value) => {
 
   const presentation = new PresentationLayer(0, y, width, height)
 
-  presentation.setPhoto(value.photo)
-  presentation.setTitle(value.title)
-  presentation.setSpeaker(value.name, value.role)
+  presentation
+    .setPhoto(value.photo)
+    .setTitle(value.title)
+    .setSpeaker(value.name, value.role)
 
   dispatch(createPresentation(presentation))
 })

@@ -66,13 +66,16 @@ export class PresentationLayer extends Layer implements PresentationSchema {
 
   setPhoto(photo: string) {
     this.photo.setSrc(photo)
+    return this
   }
 
   setTitle(title: string) {
     this.title.setWord(title)
+    return this
   }
 
   setSpeaker(speaker: string, role: string) {
     this.speaker.setWord(`${speaker} - ${role}`)
+    return this
   }
 }
