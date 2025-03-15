@@ -22,7 +22,15 @@ export class DownloadButton extends HTMLButtonElement {
     this.append(this.svg)
 
     this.onclick = () => {
-      this.canvas.toBlob(
+      const canvas = document.createElement('canvas')
+      canvas.width = 2160
+      canvas.height = 2160
+
+      const context = canvas.getContext('2d')!
+
+      context.drawImage(this.canvas, 0, 0, 2160, 2160)
+
+      canvas.toBlob(
         (blob) => {
           if (blob) {
             const href = URL.createObjectURL(blob)
